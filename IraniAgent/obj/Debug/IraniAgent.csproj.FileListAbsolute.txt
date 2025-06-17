@@ -1,0 +1,8 @@
+C:\Users\yaelg\source\repos\IraniAgent\IraniAgent\bin\Debug\IraniAgent.exe.config
+C:\Users\yaelg\source\repos\IraniAgent\IraniAgent\bin\Debug\IraniAgent.exe
+C:\Users\yaelg\source\repos\IraniAgent\IraniAgent\bin\Debug\IraniAgent.pdb
+C:\Users\yaelg\source\repos\IraniAgent\IraniAgent\obj\Debug\IraniAgent.csproj.AssemblyReference.cache
+C:\Users\yaelg\source\repos\IraniAgent\IraniAgent\obj\Debug\IraniAgent.csproj.CoreCompileInputs.cache
+C:\Users\yaelg\source\repos\IraniAgent\IraniAgent\obj\Debug\IraniAgent.exe
+C:\Users\yaelg\source\repos\IraniAgent\IraniAgent\obj\Debug\IraniAgent.pdb
+C:\Users\yaelg\source\repos\IraniAgent\IraniAgent\obj\Debug\IraniAgent.exe.config
