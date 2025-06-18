@@ -36,7 +36,7 @@ namespace IraniAgent
         {
             AttachedSensors.Add(sensor);
         }
-        public string CheckExposure()
+        public int CheckExposure()
         {
             int sum = 0;
             foreach (Sensor s in AttachedSensors)
@@ -45,10 +45,11 @@ namespace IraniAgent
                     sum++;
                 
             }
-            return $"{sum}/ {Weaknesses.Count}";
+            return sum;
            
 
         }
+
 
 
     }

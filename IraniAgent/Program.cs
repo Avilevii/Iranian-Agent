@@ -12,12 +12,10 @@ namespace IraniAgent
         static void Main(string[] args)
         {
             
-            Agent agent = new Agent();
+           
             Game game = new Game();
-            agent.GenerateSecretWeaknesses();
-            game.AskThePlayer(agent);
-            string result = agent.CheckExposure();
-            Console.WriteLine(result);
+            game.RunTurn();
+            
         }
 
     }
