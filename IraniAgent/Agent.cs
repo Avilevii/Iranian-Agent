@@ -9,34 +9,38 @@ namespace IraniAgent
 {
     internal class Agent
     {
+        public int Rank;
         public List<string> Weaknesses { get; set; }
         public List<Sensor> AttachedSensors { get; set; }
 
 
 
-        public Agent()
+        public Agent(int rank)
         {
+            Rank = rank;
             Weaknesses = new List<string>();
             AttachedSensors = new List<Sensor>();
         }
 
-        public void GenerateSecretWeaknesses()
+        public virtual void GenerateSecretWeaknesses()
         {
             Weaknesses.Clear();
             Random random = new Random();
             SensorManger manger = new SensorManger();
             List<Sensor> AllSensor = manger.GetAllSensor();
-            int num1 = random.Next(0, 4);
-            int num2 = random.Next(0, 4);
-           Weaknesses.Add(AllSensor[num1].Type);
-            Weaknesses.Add(AllSensor[num2].Type);
+            for(int i = 0; i < Rank; i++)
+            {
+                int num = random.Next(0, 4);
+                Weaknesses.Add(AllSensor[num].Type);
+            }
+            
         }
 
-        public void AddAttachedSensors(Sensor sensor)
+        public virtual void AddAttachedSensors(Sensor sensor)
         {
             AttachedSensors.Add(sensor);
         }
-        public int CheckExposure()
+        public virtual int CheckExposure()
         {
             int sum = 0;
             foreach (Sensor s in AttachedSensors)
@@ -47,6 +51,10 @@ namespace IraniAgent
             }
             return sum;
            
+
+        }
+        public virtual void Counterattack()
+        {
 
         }
 

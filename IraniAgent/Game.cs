@@ -8,11 +8,9 @@ namespace IraniAgent
 {
     internal class Game
     {
-        public void AskThePlayer(Agent agent)
+        public void AskThePlayer(Agent agent, List<Sensor> AllSensor)
         {
            
-            SensorManger manger = new SensorManger();
-            List<Sensor> AllSensor = manger.GetAllSensor();
             agent.AttachedSensors.Clear();
             for (int i = 0; i < agent.Weaknesses.Count; i++)
             {
@@ -20,7 +18,16 @@ namespace IraniAgent
                 string input = Console.ReadLine();
                 int num = int.Parse(input);
                 Sensor s = AllSensor[num - 1];
-                agent.AddAttachedSensors(s);
+                if (s.Activate())
+                {
+                    agent.AddAttachedSensors(s);
+                }
+                else
+                {
+                    Console.WriteLine("מימשת את כל הפעמים");
+                }
+                
+
 
             }
 
@@ -28,8 +35,10 @@ namespace IraniAgent
         }
         public void RunTurn()
         {
+            SensorManger manager = new SensorManger();
+            List<Sensor> AllSensor = manager.GetAllSensor();
             Game game = new Game();
-            Agent agent = new Agent();
+            Agent agent = new SquadLeader();
             ConsoleUi ui = new ConsoleUi();
             ui.ShowStartMessage();
 
@@ -40,8 +49,7 @@ namespace IraniAgent
             {
                 ui.ShowTurnIntro();
                 ui.ShowSensorChoices();
-                agent.GenerateSecretWeaknesses();
-                game.AskThePlayer(agent);
+                game.AskThePlayer(agent, AllSensor);
                
                 agent.CheckExposure();
                 check = agent.CheckExposure();
