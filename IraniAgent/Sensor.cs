@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IraniAgent
 {
-    public class Sensor
+    public abstract class Sensor
     {
         public string Type { get; set; }
 
@@ -14,12 +14,10 @@ namespace IraniAgent
         {
             Type = type;
         }
-        public virtual void Activate()
-        {
-            Console.WriteLine("הפעלת הסנסור מתחילה:");
-        }
-        
+
+        public abstract bool Activate(); 
     }
+
 
 
 
@@ -27,7 +25,30 @@ namespace IraniAgent
 
     public class Pulse: Sensor
     {
-        public Pulse(): base("Plase") { }
+        private int PulsCount = 0;
+        public bool Bool = true;
+        public Pulse(): base("Plase")
+        {
+
+        }
+
+        public override bool Activate()
+        {
+            if (Bool)
+            {
+                PulsCount++;
+               
+            }
+            
+            if(PulsCount >= 3)
+            {
+                Bool = false;
+                Console.WriteLine("מימשת כבר 3 פעמים הסנסור שבור");
+
+                return false;
+            }
+            return true;
+        }
     }
 
 
@@ -37,18 +58,33 @@ namespace IraniAgent
     public class Thermal: Sensor
     {
         public Thermal(): base("Thermal") { }
+
+        public override bool Activate()
+        {
+            return true; 
+        }
     }
 
 
     public class Audio: Sensor
     {
         public Audio(): base("Audio") { }
+
+        public override bool Activate()
+        {
+            return true;
+        }
     }
 
 
     public class Heat: Sensor
     {
         public Heat(): base("Heat") { }
+
+        public override bool Activate()
+        {
+            return true;
+        }
     }
 
 
